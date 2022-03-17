@@ -8,7 +8,7 @@ from django.contrib.auth.hashers import make_password,check_password
 
 def homepage(request):
     print("You are",request.user.get_username())
-    return render(request,'main/home.html')
+    return render(request,'home.html')
 
 def menupage(request):
     cart = request.session.get('cart')
