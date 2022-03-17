@@ -7,7 +7,7 @@ from django.contrib.auth  import authenticate,  login, logout
 from django.contrib.auth.hashers import make_password,check_password
 
 def homepage(request):
-    print("You are",request.user.get_username())
+    # print("You are",request.user.get_username())
     return render(request,'main/home.html')
 
 def menupage(request):
@@ -75,7 +75,7 @@ def remove_item(request):
 
 #Cart section start
 def cart(request):
-    
+    cart=request.session.get('cart')
     if cart:
         ids=list(request.session.get('cart').keys())
         products=FoodItem.get_foodItems_by_id(ids)
@@ -83,7 +83,8 @@ def cart(request):
         
         return render(request,'main/cart.html',{'products' : products})
     else:
-        return HttpResponse("404- Not found")
+        messages.error(request, "Please Login to view cart")
+        return redirect('homepage')
 
 def cart_quantity(product,cart):
     # del cart["null"]
@@ -268,7 +269,7 @@ def signup(request):
                 user=User.objects.create(username=username,password=password1,email=email,first_name=first_name,last_name=last_name)
                 user.set_password(password1)
                 user.save()
-                messages.success(request, "Your account has been sucessfully created")
+                messages.success(request, "Your account has been sucessfully created. Kindly Login to your account and enjoy our services ")
                 return redirect('homepage')
             
         else:
