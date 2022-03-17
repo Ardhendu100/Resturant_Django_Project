@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %} Resturant Menu Page{% endblock title %}
+
+{% block body %}
+{% load cart %}
+
+<br>
+<br>
+ <div class="container-fluid mt-3">
+
+<div class="row">
+
+<!--Filter-->
+<div class="col-lg-2 mx-auto">
+<!-- End Filter-->
+<div class="list-group">
+    {% for category in categories %}
+    <a href="?category={{category.id}}" class="list-group-item list-group-item-action">{{category.Name}}</a>
+
+    {% endfor %}
+  </div>
+</div>
+<br>
+<!--All Food Items-->
+
+<div id="allfoodItems" class="col-lg-9 mx-auto">
+<div class="row mx-auto">
+{% for items in allItems %}
+<div class="card mx-auto mb-3" id={{items.Sno}} style="width: 20rem;">
+    <img src="{{items.Image}}" class="card-img-top" alt="..."  style="width: 100%; height: 13rem; justify-content: center;">
+    <div class="card-body">
+      <h5 class="card-title" style="color='white' ">{{items.Name}}</h5>
+      <h2 style="color:'white' "><b>{{items.Price}}</b></h2>
+      {% comment %} {{items | is_in_cart:request.session.cart}} {% endcomment %}
+      
+    </div>
+
+    <div class="card-footer p-0  no-gutters">
+        {% if items|is_in_cart:request.session.cart %}
+        <div class="row no-gutters">
+
+            <form action="/remove_item" method="post" class="col-2">
+                {% csrf_token %}
+                       <input hidden type="text" value='{{items.Sno}}' name="product">
+                <input type="submit" value=" - " class="btn btn-block btn-secondary">
+            </form> 
+<div class="text-center col">{{items|cart_quantity:request.session.cart}} in cart</div>
+
+<form action="/post_product" method="post" class="col-2">
+    {% csrf_token %}
+           <input hidden type="text" value={{items.Sno}} name="product">
+    <input type="submit" value=" + " class="btn btn-block btn-secondary">
+</form>
+    </div>
+
+    {% else %}
+
+    <form action="/post_product" method="post" class="btn-block">
+        {% csrf_token %}
+           <input hidden type="text" value={{items.Sno}} name="product">
+        <input type='submit' class="btn btn-primary  btn-block" value="Add To Cart" style="width:100%"></input>
+       </form>
+       {% endif %}
+  </div>
+</div>
+{% endfor %}
+</div>
+</div>
+</div> 
+</div>
+
+{% endblock body %}
+
+
+

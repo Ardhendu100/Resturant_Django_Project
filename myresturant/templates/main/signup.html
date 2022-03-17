@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %} Signup Page{% endblock title %}
+<style>
+</style>
+{% block body %}
+<form class="modal-content" action="/signup" method="post">
+    {% csrf_token %}
+     <div class="container mt-4">
+    
+        <div class="p-4 m-5">
+    
+            
+            <div class="col-lg-5 rounded mx-auto border pt-3">
+                <div class="text-center col" >
+                
+                    <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Shopping_cart_with_food_clip_art_2.svg/307px-Shopping_cart_with_food_clip_art_2.svg.png" alt=""
+                    class="" style="height: 150px;">
+                <!-- <hr> -->
+                <div class="display-8">Create An Account</div>
+    
+                </div>
+                <h3 hidden class="alert alert-light border rounded">Create An Account</h3>
+                <form action="/signup" method="POST">
+                    
+                    {% csrf_token %}
+    
+                    
+                    <!-- firstname -->
+                    <div class="form-group">
+                        <label for="" style="margin-left:7px; margin-top:10px;">First Name</label>
+                        <br>
+        
+                        <input type="text" name="first_name"
+                         id="" value="{{values.first_name}}" class="form-control form-control-sm" 
+                         placeholder="" required>
+                    </div>
+    
+                    <!-- last name -->
+                    <div class="form-group">
+                        <label for="" style="margin-left:7px; margin-top:10px;">Last Name</label><br>
+                        <input type="text" name="last_name" 
+                        id="" value="{{values.last_name}}" class="form-control form-control-sm"
+                        required>
+                    </div>
+
+                    <!-- username -->
+                    <div class="form-group">
+                        <label for="" style="margin-left:7px; margin-top:10px;">Username</label><br>
+                        <input type="text" name="username" 
+                        id="" value="{{values.username}}" class="form-control form-control-sm"
+                        required>
+                        <ul>
+                            <li style="font-size: 0.8rem; color: blue;">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</li>
+                        </ul>
+                    </div>
+    
+                    <!-- email -->
+                    <div class="form-group">
+                        <label for="" style="margin-left:7px; margin-top:10px;">Email</label><br>
+                        <input required type="email" name="email" id=""
+                        value="{{values.email}}" 
+                        class=" form-control-sm form-control" placeholder="example@gmail.com" required>
+                    </div>
+    
+    
+                    <!-- password1 -->
+                    <div class="form-group">
+                        <label for="" style="margin-left:7px; margin-top:10px;">Password</label><br>
+                        <input type="password" 
+                        name="password1" 
+                        id=""
+                         class="form-control form-control-sm" placeholder="********" required>
+                         <ul class="password-info">
+                             <li style="font-size: 0.8rem; color: blue;">Your password can’t be too similar to your other personal information.</li>
+                             <li style="font-size: 0.8rem; color: blue;">Your password must contain at least 8 characters</li>
+                             <li style="font-size: 0.8rem; color: blue;">Your password can’t be a commonly used password.</li>
+                             <li style="font-size: 0.8rem; color: blue;">Your password can’t be entirely numeric</li>
+                         </ul>
+                    </div>
+
+                    <!-- password2 -->
+                    <div class="form-group">
+                        <label for="" style="margin-left:7px; margin-top:10px;">Re-enter Password</label><br>
+                        <input type="password" 
+                        name="password2" 
+                        id=""
+                         class="form-control form-control-sm" placeholder="********" required>
+                         <ul>
+                            <li style="font-size: 0.8rem; color: blue;">Enter the same password as before, for verification.
+                            </li>
+                        </ul>
+                    </div>
+    
+                    
+                    <div class="form-group">
+                        <input class="btn btn btn-primary"  type="submit" value="Create An Account " style="margin-top:15px"> 
+                    </div>
+    
+                    
+                </form>
+
+            </div>
+        </div>
+    </div> 
+
+    {% endblock body %}
