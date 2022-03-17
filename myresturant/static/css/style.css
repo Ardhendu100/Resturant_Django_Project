@@ -17,6 +17,7 @@ body{
     background-size: cover;
 } 
 .logo{
+    list-style: none;
     color: whitesmoke;
     font-weight: 400;
     font-size: 40px;
@@ -32,6 +33,23 @@ nav{
     border-left: none;
     border-right: none;
 }
+
+
+/* Bootstarp navbar */
+
+.nav-link:hover {background-color: #f13210;}
+
+.nav-link{
+    font-size: 18px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+ font-weight: 300;
+}
+.nav-item{
+    padding: 0 10px;
+}
+
+
+/* Bootstarp navbar */
 
 nav ul{
     display: flex;
@@ -110,7 +128,8 @@ nav ul .search-icon .icon span{
     }
 }
 
-.middile-container{
+/* .middile-container{
+
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -118,7 +137,6 @@ nav ul .search-icon .icon span{
 }
 
 .ourcontent{
-    margin-left: 50px;
     width: 30rem;
 }
 .ourcontent h2{
@@ -126,8 +144,33 @@ nav ul .search-icon .icon span{
 }
 .ourcontent p{
     color: whitesmoke;
-    word-spacing: 0.2rem;
-    letter-spacing: 0.09;
+    
+} */
+
+.middile-container{
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    
+}
+.ourcontent{
+    width: 30%;
+    margin-left: 3rem;
+
+}
+.ourcontent h2{
+    color: whitesmoke;
+}
+.ourcontent p{
+    color: whitesmoke;
+    letter-spacing: 0.05rem;
+}
+
+.food-img{
+    width: 25%;
+    margin-left: 1rem;
 }
 .card-container{
     display: flex;
@@ -138,6 +181,48 @@ nav ul .search-icon .icon span{
     border:1px whitesmoke solid;
     margin: 15px;
 }
+
+@media screen and (max-width: 650px) {
+  
+    .food-img,
+    .ourcontent {
+        width: 80%;
+    }
+}
+
+.column {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+  }
+  
+  /* Remove extra left and right margins, due to padding */
+  .row {margin: 0 -5px;}
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive columns */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+  
+  /* Style the counter cards */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+  }
+
 
 .dishes .heading{
     color:yellow;
