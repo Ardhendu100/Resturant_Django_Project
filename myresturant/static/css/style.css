@@ -182,7 +182,7 @@ nav ul .search-icon .icon span{
     margin: 15px;
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 1200px) {
   
     .food-img,
     .ourcontent {
